@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity  {
                 Class fragmentClass = null;
                 Fragment fragment = null;
 
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
                 String name = parent.getItemAtPosition(position).toString();
 
 
