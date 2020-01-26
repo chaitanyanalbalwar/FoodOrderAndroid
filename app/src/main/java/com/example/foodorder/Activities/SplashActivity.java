@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 6000;
     Boolean success;
 
     @Override
@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent i = new Intent(SplashActivity.this, PhoneVarification.class);
+                Intent i = new Intent(SplashActivity.this, PhoneNumber.class);
                 startActivity(i);
 
                 finish();
