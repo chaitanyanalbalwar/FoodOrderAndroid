@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.example.foodorder.Fragments.HomeFragment;
+import com.example.foodorder.Fragments.LayoutList;
 import com.example.foodorder.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -46,9 +47,9 @@ public class MainActivity extends AppCompatActivity  {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setSelectedItemId(R.id.navigation_shop);
+        navigation.setSelectedItemId(R.id.navigation_home);
 
-        toolbar.setTitle("Shop");
+        toolbar.setTitle("Home");
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -58,10 +59,11 @@ public class MainActivity extends AppCompatActivity  {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
             switch (item.getItemId()) {
-                case R.id.navigation_shop:
+                case R.id.navigation_home:
                     toolbar.setTitle("Home");
 
-                    fragment = new HomeFragment();
+                  //  fragment = new HomeFragment();
+                    fragment = new LayoutList();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_gifts:
