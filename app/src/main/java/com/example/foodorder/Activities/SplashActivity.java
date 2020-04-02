@@ -7,9 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.foodorder.Activities.Login.LoginActivity;
 import com.example.foodorder.R;
-
-import java.util.concurrent.TimeUnit;
 
 public class SplashActivity extends AppCompatActivity {
 

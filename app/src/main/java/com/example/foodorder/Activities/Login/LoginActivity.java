@@ -1,4 +1,4 @@
-package com.example.foodorder.Activities;
+package com.example.foodorder.Activities.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.foodorder.Fragments.LayoutList;
+import com.example.foodorder.Activities.Login.Presenter.LoginPresenter;
+import com.example.foodorder.Activities.Login.Presenter.LoginPresenterComp;
+import com.example.foodorder.Activities.Login.View.ILoginView;
+import com.example.foodorder.Activities.MainActivity;
 import com.example.foodorder.Interface.UserService;
 import com.example.foodorder.Model.ResObj;
 import com.example.foodorder.R;
@@ -21,17 +25,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements ILoginView {
 
 
     public static final String MyPREFERENCES = "FoodOrder";
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
-
     EditText edtMobileNo;
     Button btnLogin;
     UserService userService;
+
+    private LoginPresenter loginPresenter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +51,28 @@ public class LoginActivity extends AppCompatActivity {
 
         edtMobileNo = (EditText) findViewById(R.id.edt_mobile_number);
         btnLogin = (Button) findViewById(R.id.btn_login);
+        progressBar=findViewById(R.id.progress_login);
         userService = ApiUtils.getUserService();
+
+        loginPresenter = new LoginPresenterComp(this);
+        loginPresenter.setProgressBarVisiblity(View.INVISIBLE);
+
+
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String username = edtMobileNo.getText().toString();
+                /*String username = edtMobileNo.getText().toString();
 
                 Intent i = new Intent(LoginActivity.this, Otp_Activity.class);
-                startActivity(i);
+                startActivity(i);*/
 
+
+                loginPresenter.setProgressBarVisiblity(View.VISIBLE);
+                btnLogin.setEnabled(false);
+                loginPresenter.doLogin(edtMobileNo.getText().toString());
 
             }
         });
@@ -74,7 +90,6 @@ public class LoginActivity extends AppCompatActivity {
         }
         return true;
     }
-
 
 
     private void doLogin(final String username,final String password){
@@ -103,5 +118,26 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    @Override
+    public void onLoginResult(Boolean result, int code) {
+
+        loginPresenter.setProgressBarVisiblity(View.INVISIBLE);
+        btnLogin.setEnabled(true);
+        if (result){
+            Toast.makeText(this,"Login Success",Toast.LENGTH_SHORT).show();
+
+            startActivity(new Intent(this,MainActivity.class));
+        }
+        else
+            Toast.makeText(this,"Login Fail, code = " + code,Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onSetProgressBarVisibility(int visibility) {
+        progressBar.setVisibility(visibility);
     }
 }

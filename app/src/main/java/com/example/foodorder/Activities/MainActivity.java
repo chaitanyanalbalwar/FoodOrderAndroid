@@ -4,23 +4,18 @@ package com.example.foodorder.Activities;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.example.foodorder.Fragments.HomeFragment;
+import com.example.foodorder.Fragments.Menu.AllMenu;
 import com.example.foodorder.Fragments.LayoutList;
+import com.example.foodorder.Fragments.Restourant.RestourantList;
 import com.example.foodorder.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-
 import androidx.annotation.NonNull;
-
 import android.view.MenuItem;
-
 import androidx.annotation.RequiresApi;
-
 import androidx.appcompat.app.AppCompatActivity;;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.view.Menu;
 
 
@@ -68,6 +63,8 @@ public class MainActivity extends AppCompatActivity  {
                     return true;
                 case R.id.navigation_gifts:
                     toolbar.setTitle("My Gifts");
+                    fragment = new RestourantList();
+                    loadFragment(fragment);
                     return true;
                 case R.id.navigation_cart:
                     toolbar.setTitle("Cart");

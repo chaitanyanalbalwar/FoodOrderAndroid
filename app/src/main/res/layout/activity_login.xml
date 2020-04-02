@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:background="@color/white"
     android:gravity="center"
-       tools:context=".Activities.LoginActivity">
+       tools:context=".Activities.Login.LoginActivity">
 
     <RelativeLayout
         android:layout_gravity="center"
@@ -80,6 +80,14 @@
             android:text="Connect with Phone No."
             android:gravity="center"/>
 
+        <ProgressBar
+            android:id="@+id/progress_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp" />
+
     </RelativeLayout>
+
+
 
 </ScrollView>
