@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.foodorder.Activities.Login.LoginActivity;
+import com.example.foodorder.Fragments.Menu.Model.MainMenu;
 import com.example.foodorder.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -31,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(i);
 
 

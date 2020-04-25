@@ -4,6 +4,8 @@ package com.example.foodorder.Activities;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.example.foodorder.Fragments.Categeorymenu.CategeoryMenuFragment;
+import com.example.foodorder.Fragments.HeloList.HeroListFragment;
 import com.example.foodorder.Fragments.Menu.AllMenu;
 import com.example.foodorder.Fragments.LayoutList;
 import com.example.foodorder.Fragments.Restourant.RestourantList;
@@ -29,14 +31,11 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         init();
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void init() {
-
 
         toolbar=findViewById(R.id.toolbar);
 
@@ -56,18 +55,18 @@ public class MainActivity extends AppCompatActivity  {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     toolbar.setTitle("Home");
-
-                  //  fragment = new HomeFragment();
-                    fragment = new LayoutList();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.navigation_gifts:
-                    toolbar.setTitle("My Gifts");
                     fragment = new RestourantList();
                     loadFragment(fragment);
                     return true;
+                case R.id.navigation_gifts:
+                    toolbar.setTitle("");
+                    fragment = new AllMenu();
+                    loadFragment(fragment);
+                    return true;
                 case R.id.navigation_cart:
-                    toolbar.setTitle("Cart");
+                    toolbar.setTitle("");
+                    fragment = new CategeoryMenuFragment();
+                    loadFragment(fragment);
                     return true;
                 case R.id.navigation_profile:
                     toolbar.setTitle("Profile");
