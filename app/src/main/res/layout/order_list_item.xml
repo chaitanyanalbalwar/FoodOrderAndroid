@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:cardCornerRadius="2dp">
+
+        <ImageView
+            android:id="@+id/itemMainLogo"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/pizza"/>
+
+        <ImageView
+            android:id="@+id/itemLogo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/veg"
+            android:layout_marginTop="150dp"/>
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Burger King"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="50dp"/>
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            android:text="$5.00"
+            android:textStyle="bold"
+            android:layout_marginTop="170dp"
+            android:layout_marginLeft="20dp"/>
+
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="ADD"
+            android:textColor="@color/green"
+            android:background="@drawable/edt_background"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="260dp"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            android:text="Choose any 3 of our delicious variants and make your own 3 in 1 Experiment box."
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="20dp"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

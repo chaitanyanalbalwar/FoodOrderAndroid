@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activities.PhoneVarification">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_gravity="center">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_centerHorizontal="true"
+            app:cardBackgroundColor="#fff"
+            app:cardCornerRadius="2dp"
+            android:id="@+id/card"
+            android:layout_marginTop="97dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="296dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter Varification Code"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:id="@+id/txtVarification"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="2"
+                android:layout_marginTop="90dp"
+                android:id="@+id/text"
+                android:text="A varification code sent to your Number \nprovoided +9876543210 "
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center" />
+
+            <EditText
+                android:layout_width="232dp"
+                android:layout_height="48dp"
+                android:text="123456"
+                android:focusable="false"
+                android:layout_marginTop="132dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+
+            <Button
+
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="190dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorPrimary"
+                android:text="Varify Number"
+                android:textAllCaps="false" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:layout_below="@+id/card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="Don't get the code?"/>
+
+    </RelativeLayout>
+
+
+</ScrollView>

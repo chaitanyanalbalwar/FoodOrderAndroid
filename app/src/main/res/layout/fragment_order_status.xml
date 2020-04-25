@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.OrderStatus">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20sp"
+        android:text="Order Status"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/pizza"
+        android:layout_marginLeft="250dp"/>
+
+    <TextView
+        android:id="@+id/orderIdMsg"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="120dp"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Order Id"/>
+
+    <TextView
+        android:id="@+id/orderID"
+        android:layout_below="@+id/orderIdMsg"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/blue"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DKF- 501E9"/>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/orderID"
+        android:background="@color/blue"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"/>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/rr"
+        android:layout_below="@+id/recyclerview"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:padding="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="Rating"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:background="@drawable/edt_background"
+            android:padding="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate Now"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentRight="true"/>
+
+
+    </RelativeLayout>
+
+
+   <Button
+       android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp"
+       android:layout_marginTop="20dp"
+       android:layout_marginBottom="20dp"
+       android:text="Cancel Order"
+       android:textSize="16sp"
+       android:textAllCaps="false"
+       android:background="@color/colorPrimary"
+       android:textColor="@color/white"
+       android:layout_alignParentBottom="true"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
+
+</RelativeLayout>
