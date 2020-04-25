@@ -8,7 +8,7 @@
 <ImageView
     android:layout_width="146dp"
     android:layout_height="146dp"
-    android:background="@mipmap/ic_launcher"
+    android:background="@mipmap/splash_logo"
     android:layout_centerVertical="true"
     android:layout_centerHorizontal="true"/>
 

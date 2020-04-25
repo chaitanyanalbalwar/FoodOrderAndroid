@@ -1,144 +1,85 @@
 package com.example.foodorder.Activities;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+
+import android.os.Build;
 import android.os.Bundle;
 
-import com.example.foodorder.Fragments.MainFragment;
+import com.example.foodorder.Fragments.Categeorymenu.CategeoryMenuFragment;
+import com.example.foodorder.Fragments.HeloList.HeroListFragment;
+import com.example.foodorder.Fragments.Menu.AllMenu;
+import com.example.foodorder.Fragments.LayoutList;
+import com.example.foodorder.Fragments.Restourant.RestourantList;
 import com.example.foodorder.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
-
-import androidx.core.view.GravityCompat;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.annotation.NonNull;
 import android.view.MenuItem;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.view.Menu;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity  {
 
-    public static final String MyPREFERENCES = "FoodOrder";
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
+   Toolbar toolbar;
 
-
-    ListView menulistview;
-    protected DrawerLayout drawer;
-    FrameLayout frameLayout;
-    ImageView userImage;
-    TextView username, email;
-    private ArrayList<String> mitms;
-    private ArrayAdapter mStringAdaptor;
-
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        editor = sp.edit();
-
-
-        menulistview = findViewById(R.id.menuList);
-
-
-        mitms = new ArrayList<>();
-        mitms.add("Home");
-        mitms.add("Order History");
-        mitms.add("Track Order");
-        mitms.add("Logout");
-
-        mStringAdaptor = new ArrayAdapter<String>(this, R.layout.drawer_list_item, mitms);
-        menulistview.setAdapter(mStringAdaptor);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        drawer = findViewById(R.id.drawer_layout);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-
         init();
-
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void init() {
 
-        frameLayout = findViewById(R.id.frameLayout);
-        userImage = findViewById(R.id.userImage);
-        username = findViewById(R.id.userName);
-        email = findViewById(R.id.userEmail);
+        toolbar=findViewById(R.id.toolbar);
 
-        menulistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setSelectedItemId(R.id.navigation_home);
 
-                Class fragmentClass = null;
-                Fragment fragment = null;
+        toolbar.setTitle("Home");
+    }
 
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                String name = parent.getItemAtPosition(position).toString();
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    toolbar.setTitle("Home");
+                    fragment = new RestourantList();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.navigation_gifts:
+                    toolbar.setTitle("");
+                    fragment = new AllMenu();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.navigation_cart:
+                    toolbar.setTitle("");
+                    fragment = new CategeoryMenuFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.navigation_profile:
+                    toolbar.setTitle("Profile");
+                    return true;
 
-                if (name.equalsIgnoreCase("Home")) {
-                    fragment = new MainFragment();
-                } else if (name.equalsIgnoreCase("Logout")){
-
-
-                    editor.clear();
-                    editor.commit();
-
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-
-
-
-                if (fragment != null) {
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.frameLayout, fragment);
-                    ft.commit();
-                }
-                drawer.closeDrawer(GravityCompat.START);
             }
-        });
 
-    }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+            return false;
         }
-    }
+    };
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -153,18 +94,19 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
-    public void clearLogin(){
-
-        // clear pref every 5 min .
-
-        if (sp.getLong("ExpiredDate", -1) > System.currentTimeMillis()) {
-
-        } else {
-
-            editor.clear();
-            editor.apply();
-        }
+        finishAffinity();
+        finish();
     }
 }

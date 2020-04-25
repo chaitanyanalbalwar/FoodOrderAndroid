@@ -4,5 +4,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="white">#fff</color>
+    <color name="female">#FE75C4</color>
+    <color name="btn_border">#CCCCCC</color>
+    <color name="blue">#5466CA</color>
+    <color name="green">#3AA83F</color>
+    <color name="black">#000000</color>
 
 </resources>

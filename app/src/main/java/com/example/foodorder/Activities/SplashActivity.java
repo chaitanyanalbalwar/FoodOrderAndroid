@@ -2,24 +2,22 @@ package com.example.foodorder.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.foodorder.Activities.Login.LoginActivity;
+import com.example.foodorder.Fragments.Menu.Model.MainMenu;
 import com.example.foodorder.R;
 
-import java.util.concurrent.TimeUnit;
-
 public class SplashActivity extends AppCompatActivity {
-
 
     public static final String MyPREFERENCES = "FoodOrder";
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 500;
     Boolean success;
 
     @Override
@@ -28,19 +26,25 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
-        new Handler().postDelayed(new Runnable() {
 
-            @Override
-            public void run() {
+            new Handler().postDelayed(new Runnable() {
 
-                Intent i = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(i);
+                @Override
+                public void run() {
 
-                editor.putLong("ExpiredDate", System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(5));
+                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(i);
 
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
+
+                /*Intent i = new Intent(SplashActivity.this, PhoneNumber.class);
+                startActivity(i);*/
+
+                    finish();
+
+                }
+            }, SPLASH_TIME_OUT);
+
+
 
 
         /*sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
